@@ -1,0 +1,31 @@
+import { Router } from "express";
+import { createAuthRoutes } from "./auth.routes.js";
+import { createServiceRoutes } from "./services.routes.js";
+import { createUserRoutes } from "./users.routes.js";
+import { createProfessionalRoutes } from "./professionals.routes.js";
+import { createCustomerRoutes } from "./customers.routes.js";
+import { createAppointmentRoutes } from "./appointments.routes.js";
+import { createPaymentRoutes } from "./payments.routes.js";
+import { createCashRoutes } from "./cash.routes.js";
+import { createReportRoutes } from "./reports.routes.js";
+import { createSettingsRoutes } from "./settings.routes.js";
+import { createProductRoutes } from "./products.routes.js";
+import { createOrderRoutes } from "./orders.routes.js";
+import { createOperationsRoutes } from "./operations.routes.js";
+export function createRoutes(controllers) {
+    const router = Router();
+    router.use(createAuthRoutes(controllers.auth));
+    router.use(createUserRoutes(controllers.users));
+    router.use(createServiceRoutes(controllers.services));
+    router.use(createProfessionalRoutes(controllers.professionals));
+    router.use(createCustomerRoutes(controllers.customers));
+    router.use(createAppointmentRoutes(controllers.appointments));
+    router.use(createPaymentRoutes(controllers.payments));
+    router.use(createCashRoutes(controllers.cash));
+    router.use(createReportRoutes(controllers.reports));
+    router.use(createSettingsRoutes(controllers.settings));
+    router.use(createProductRoutes(controllers.products));
+    router.use(createOrderRoutes(controllers.orders));
+    router.use(createOperationsRoutes(controllers.operations));
+    return router;
+}
